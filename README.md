@@ -24,6 +24,3 @@ Make a calculator which will support the following operations:
 ``char ch = nextLine().charAt(0);``  
 **USE THIS to convert from String entered to char**
 
-###### note
-
-*I realize using "char ch = nextLine().charAt(0)" I am only going to be able to input single digit integers. But for now I will focus on getting everything built and then consider how that can be changed later*
