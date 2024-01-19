@@ -1,9 +1,11 @@
 public class App {
     public static void main(String[] args) throws Exception {
         Input userInput = new Input();
-        Calculate calc = new Calculate();
+        
 
+        System.out.println();
         System.out.println("Welcome to the Calculator app.");
+        System.out.println();
 
         // get operation and reference variables
 
@@ -12,7 +14,10 @@ public class App {
         String opInput = userInput.getOpInput();
         int input2 = userInput.getInput2();
 
-        calc.mathCalc(input1, opInput, input2);
+        Calculate calc = new Calculate(input1, input2, opInput);
+        calc.mathCalc();
+        calc.printResult();
+        System.out.println();
         
 
         
