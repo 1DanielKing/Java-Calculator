@@ -4,10 +4,9 @@ public class App {
     public static void main(String[] args) {
         Input input = new Input();
         String operationString = input.getInput();
-        List<String> equations = Arrays.asList(
-            operationString    
-            //"(5 + 3) * 2"
-        );
+        List<String> equations = Arrays.asList(operationString);
+            //"(5 + 3) * 2");
+        
         for(String e: equations)
             System.out.println(solveEquation(e));
     }
@@ -18,10 +17,11 @@ public class App {
         Stack<Character> operators = new Stack<>();
 
         Map<Character, Integer> map = new HashMap<>();
-        map.put('+', 1);
-        map.put('-', 1);
-        map.put('*', 2);
-        map.put('/', 2);
+        map.put('^', 1);
+        map.put('+', 2);
+        map.put('-', 2);
+        map.put('*', 3);
+        map.put('/', 3);
 
         for (char ch : e.toCharArray()) {
 
@@ -41,7 +41,7 @@ public class App {
                     c = operators.pop();
                 }
             }
-            else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+            else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^') {
 
                 while (!operators.isEmpty() && operators.peek() != '(' && map.get(ch) <= map.get(operators.peek())) {
                     int n2 = operands.pop();
@@ -71,6 +71,8 @@ public class App {
                 return a * b;
             case '/':
                 return a / b;
+            case '^':
+                return (int) (Math.round(Math.pow(a, b)));
         }
         return 0;
     }
